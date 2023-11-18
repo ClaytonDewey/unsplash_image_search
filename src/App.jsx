@@ -7,7 +7,11 @@ const App = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log('submitted');
+    console.log(searchInput.current.value);
+  };
+
+  const handleSelection = (selection) => {
+    searchInput.current.value = selection;
   };
 
   return (
@@ -23,13 +27,14 @@ const App = () => {
           />
         </Form>
       </div>
+      <div className='filters'>
+        <div onClick={() => handleSelection('nature')}>Nature</div>
+        <div onClick={() => handleSelection('birds')}>Birds</div>
+        <div onClick={() => handleSelection('cats')}>Cats</div>
+        <div onClick={() => handleSelection('shoes')}>Shoes</div>
+      </div>
     </div>
   );
 };
 
 export default App;
-
-/* 
-https://www.freecodecamp.org/news/how-to-build-an-image-search-app-using-react/
-Here, we have added <Form onSubmit={handleSearch}> and inside the handleSearch method we used the event.preventDefault method.
-*/
